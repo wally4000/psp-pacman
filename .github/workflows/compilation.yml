@@ -76,6 +76,20 @@ jobs:
       run: | 
         brew install bash meson makepkg gnu-sed libarchive gpgme fakeroot gettext
 
+    - name: Debug fakeroot on macOS
+      if: startsWith(matrix.os, 'macos')
+      run: |
+        uname -a
+        uname -m
+        which bash || true
+        which makepkg || true
+        which fakeroot || true
+        which mkdir || true
+        file "$(which makepkg)" || true
+        file "$(which fakeroot)" || true
+        file "$(which mkdir)" || true
+        fakeroot -- bash -lc 'mkdir -p /tmp/fakeroot-test && stat /tmp/fakeroot-test' || true
+
     - name: Compile psp-pacman
       run: |
         export PSPDEV=$PWD/pspdev
