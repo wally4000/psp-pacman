@@ -75,6 +75,7 @@ jobs:
       if: startsWith(matrix.os, 'macos')
       run: |
         brew install bash meson makepkg gnu-sed libarchive gpgme fakeroot
+        softwareupdate --install-rosetta --agree-to-license
 
     - name: Compile psp-pacman
       run: |
