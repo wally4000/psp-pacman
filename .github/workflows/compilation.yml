@@ -73,8 +73,8 @@ jobs:
 
     - name: Install Mac build dependencies
       if: startsWith(matrix.os, 'macos')
-      run: |
-        brew install bash meson makepkg gnu-sed libarchive gpgme fakeroot
+      run: | 
+        brew install bash meson makepkg gnu-sed libarchive gpgme fakeroot gettext
 
     - name: Compile psp-pacman
       run: |
